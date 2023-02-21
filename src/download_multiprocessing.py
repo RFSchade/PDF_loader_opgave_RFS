@@ -120,7 +120,7 @@ def worker(url, alt_url, path):
         print(f"Processed PDF file [ {id} ]", end = "\r")
 
 # > Complete download function
-def download(df, cores):
+def download(df):
     # Make lists of BRnum, url, alt_url, and outpath
     brnum_vec, url_vec, alt_url_vec, path_vec = [df[col].tolist() for col in df.columns]
 
@@ -131,7 +131,7 @@ def download(df, cores):
     print("Downloading PDFs...")
     
     # Download 
-    with Pool(cores) as tmppool:
+    with Pool() as tmppool:
         tmppool.starmap(worker, iterable = items)
  
     # Info
@@ -145,7 +145,7 @@ def count_list(outpath_list, BRnum_list):
     
     # Create dataframe with files and whether or not they are downloaded
     download_df = pd.DataFrame(list(zip(BRnum_list, downloaded)),
-                                columns = ["BRnum", "Downloaded"])
+                                columns = ["BRnum", "Downloadet"])
 
     # Define Listpath 
     listpath = os.path.join("output", "Download_liste.xlsx")
@@ -161,11 +161,6 @@ def parse_args():
                     type=str,
                     default="GRI_2017_2020 (1).xlsx",
                     help="Name of the file containing a list of PDF-files and URLs. Default is 'GRI_2017_2020 (1).xlsx'")
-    ap.add_argument("-c", "--cores", 
-                    required=False, 
-                    type=int,
-                    default=10,
-                    help="Nr. of cores used in processing the files. Default is 10." )
     # Parse argument
     args = vars(ap.parse_args())
     # return list of argumnets 
@@ -183,10 +178,10 @@ def main():
     pdf_df = load_data(args["file"])
     
     # Clean data 
-    df_clean = clean_data(pdf_df)
+    df_clean = clean_data(pdf_df.iloc[0:500])
     
     # Download PDFs 
-    download(df_clean, args["cores"])
+    download(df_clean)
     
     # Create new list
     count_list(pdf_df["outpaths"], pdf_df["BRnum"])

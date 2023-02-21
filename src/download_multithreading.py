@@ -143,7 +143,7 @@ def count_list(outpath_list, BRnum_list):
     
     # Create dataframe with files and whether or not they are downloaded
     download_df = pd.DataFrame(list(zip(BRnum_list, downloaded)),
-                                columns = ["BRnum", "Downloaded"])
+                                columns = ["BRnum", "Downloadet"])
 
     # Define Listpath 
     listpath = os.path.join("output", "Download_liste.xlsx")
