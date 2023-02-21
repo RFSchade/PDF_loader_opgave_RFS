@@ -139,7 +139,8 @@ af hvilken computer programmet køres på.
 #======> Hvad kunne gøres bedre?
 1) Selv med multithreading eller multiprocessing er programmet er stadig langsomt. 
    Det tager i hvert fald 2 timer at downloade alle PDF'er i det fulde datasæt. 
-   Da jeg skrev programmet Har jeg ikke prioriteret min tid ideelt – mange af de små ændringer jeg 
+   
+2) Da jeg skrev programmet Har jeg ikke prioriteret min tid ideelt – mange af de små ændringer jeg 
    har lavet i koden har måske skåret et nogle millisekunder af tiden det tager at køre koden. 
    Over mange iterations gør det en lille forskel, men jeg tror jeg ville kunne gøre det endnu hurtigere 
    hvis jeg havde brugt mere tid på multiprocessing. 
@@ -147,38 +148,38 @@ af hvilken computer programmet køres på.
    “multiprocessing”-modulet, at det er muligt at gøre det på flere forskellige måder. Måske kunne jeg 
    have øget hastigheden ved at arbejde med det?  
 
-2) Hvis man kører programmet igen med nogle flere filer i excel arket, vil programmet stadig forsøge at 
+3) Hvis man kører programmet igen med nogle flere filer i excel arket, vil programmet stadig forsøge at 
    downloade de filer, som den fejlede med at downloade før, og som slap forbi filtrering.
 
-3) Det kunne være rart med en progress - bar.
+4) Det kunne være rart med en progress - bar.
 
-4) Det virker som om, noget af det der får programmet til at tage lang tid er at gemme PDF’erne på computere. 
+5) Det virker som om, noget af det der får programmet til at tage lang tid er at gemme PDF’erne på computere. 
    Måske Kunne jeg have fundet en hurtigere måde at gemme dem på.  
 
-5) Jeg kunne have sørget for, at det ville være nok at skrive filnavnet uden .xlsx når man vælger fil.
+6) Jeg kunne have sørget for, at det ville være nok at skrive filnavnet uden .xlsx når man vælger fil.
    Jeg tog mig selv i at glemme det, og det er nok også den slags fejl man kunne have lavet, hvis man var 
    mindre teknisk anlagt.
 
-6) Jeg har forsøgt at gøre noget ved det ved at tilføje til dokumentationen, men Hvis kunden ikke er teknisk 
+7) Jeg har forsøgt at gøre noget ved det ved at tilføje til dokumentationen, men Hvis kunden ikke er teknisk 
    kyndig kan det være svært at finde ud af hvor mange cores en computer har (og finde ud af hvilket script 
    der kan betale sig bedst på en bestemt maskine). 
    Nogle af de små ting jeg har gjort for at optimere min koden hastighed (f.eks. at bruge dictionaries i 
    stedet for if-statements) har gjort min kode lidt mindre “pythonic” - altså lidt svær at læse.
 
-7) Det kunne være rart hvis jeg havde haft mulighed for at have lavet en mere præcis test af hastigheden på 
+8) Det kunne være rart hvis jeg havde haft mulighed for at have lavet en mere præcis test af hastigheden på 
    de to scripts - hvor mange kerner skal en computer helt præcist have, før det bedre kan betale sig at 
    bruge multiprocessing-scriptet? Bliver der sparet mere tid, når datasættet er større? Hvad er den ideelle 
    størrelse? 
 
-8) En del PDF-filer bliver filtreret ud af datasættet før der bliver sendt en HTML request - ville det have 
+9) En del PDF-filer bliver filtreret ud af datasættet før der bliver sendt en HTML request - ville det have 
    været bedre hvis programmet kunne informere brugeren om, hvilke filer blev sorteret fra og for hvilke 
    grunde? 
 
-9) Navne på nogle af de kolonner der bliver brugt fra det input-filen er lidt uhensigtsmæssige (ikke 
+10) Navne på nogle af de kolonner der bliver brugt fra det input-filen er lidt uhensigtsmæssige (ikke 
    informative, brug af mellemrum ikke konsistent formatering). Da Disse kolonner importeres baseret på 
    deres navn, ville et fremtidigt datasæt også skulle bruge samme navne. Det er dog bedre end at de skulle 
    bruge samme placering, hvilket var det eneste alternativ jeg kunne komme i tanke om.
  
-10) Dokumentationen antager at dem der skal bruge programmet bruger Windows 10, og at de kan navigere og 
+11) Dokumentationen antager at dem der skal bruge programmet bruger Windows 10, og at de kan navigere og 
     kalde programmer via Shellen. 
 
