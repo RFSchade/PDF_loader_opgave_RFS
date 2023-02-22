@@ -94,6 +94,18 @@ Uden argument:
 
 	python src/download_multithreading.py
 
+### Hvis programmet ikke virker
+Hvis programmet crasher, anbefaler jeg at man kigger sin filstruktur igennem. Har input-filen 
+kolonner med navnene “BRnum”, “Pdf_URL” og “Report Html Address”? Findes der en input-fil
+ved navn "GRI_2017_2020 (1).xlsx" i input-mappen? Er det en Excel-fil? Hvis --file er 
+specificeret, ender den på .xlsx?
+
+Hvis programmet har kørt, men en fil ikke er downloaded kan der være mange grunde til det.    
+Det kunne bl.a. være fordi der ikke er et fungerende link tilknyttet til den, eller fordi 
+dens ID findes et andet sted i Excel-filen. 
+Jeg anbefaler at man enten prøver at downloade en sådan fil manuelt, eller at man finder 
+et fungerende link og prøver at køre programmet igen.  
+
 ### Designovervejelser
 Som minimum valgte jeg at programmet skulle have følgende features - det skal kunne:  
 - Gennemgå en liste af PDF-filer og downloade dem via en URL
@@ -119,7 +131,7 @@ hele moduler.
 Ud over det har jeg også forsøgt at ikke at sende en HTML requests uden et URL, fjerne duplikater (både 
 blandt ID’er og de to URL’er), springe filer over der allerede er downloadede, sortere svar på requests 
 der ikke er PDF’er fra før de downloades, og undgå globale variabler.     
-Jeg har også prøvet at erstatte for-oops med list-comprehensions, og if-statements med dictionaries. 
+Jeg har også prøvet at erstatte for-loops med list-comprehensions, og if-statements med dictionaries. 
 Når jeg kan her jeg erstattet dem med list-comprehensions.    
 
 Jeg har også haft det i tankerne, at programmet skal kunne bruges igen til andre projekter, af andre folk. 
@@ -143,19 +155,17 @@ af hvilken computer programmet køres på.
 3) Hvis man kører programmet igen med nogle flere filer i excel arket, vil programmet stadig forsøge at 
    downloade de filer, som den fejlede med at downloade før, og som slap forbi filtrering.
 
-4) Det kunne være rart med en progress - bar.
+4) Det kunne være rart med en progress - bar. 
 
-5) Det virker som om, noget af det der får programmet til at tage lang tid er at gemme PDF’erne på computere. 
-   Måske Kunne jeg have fundet en hurtigere måde at gemme dem på.  
-
-6) Jeg kunne have sørget for, at det ville være nok at skrive filnavnet uden .xlsx når man vælger fil.
+5) Jeg kunne have sørget for, at det ville være nok at skrive filnavnet uden .xlsx når man vælger fil.
    Jeg tog mig selv i at glemme det, og det er nok også den slags fejl man kunne have lavet, hvis man var 
    mindre teknisk anlagt.
 
-7) Jeg har forsøgt at gøre noget ved det ved at tilføje til dokumentationen, men Hvis kunden ikke er teknisk 
+6) Jeg har forsøgt at gøre noget ved det ved at tilføje til dokumentationen, men Hvis kunden ikke er teknisk 
    kyndig kan det være svært at finde ud af hvor mange cores en computer har (og finde ud af hvilket script 
    der kan betale sig bedst på en bestemt maskine). 
-   Nogle af de små ting jeg har gjort for at optimere min koden hastighed (f.eks. at bruge dictionaries i 
+   
+7) Nogle af de små ting jeg har gjort for at optimere min koden hastighed (f.eks. at bruge dictionaries i 
    stedet for if-statements) har gjort min kode lidt mindre “pythonic” - altså lidt svær at læse.
 
 8) Det kunne være rart hvis jeg havde haft mulighed for at have lavet en mere præcis test af hastigheden på 
@@ -174,4 +184,3 @@ af hvilken computer programmet køres på.
  
 11) Dokumentationen antager at dem der skal bruge programmet bruger Windows 10, og at de kan navigere og 
     kalde programmer via Shellen. 
-
